@@ -1,0 +1,26 @@
+
+bool isPalindrome(int x){
+
+    if(x < 0 || (x % 10 == 0 && x != 0)) {
+            return false;
+        }
+    
+    int pop, revert = 0;
+
+    while(x > revert)
+    {
+        pop = x % 10;
+        if(revert > INT_MAX/10 || revert == INT_MAX/10 && pop >7)
+        {
+            return 0;
+        }
+        if(revert < INT_MIN/10 || revert == INT_MIN/10 && pop < -8)
+        {
+            return 0;
+        }
+        revert = revert*10 + pop;
+        x /= 10;
+        
+    }
+    return x == revert || x == revert/10;
+}
